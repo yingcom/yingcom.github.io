@@ -1,0 +1,304 @@
+.outerWrapper {
+  position: relative;
+  z-index: 0;
+}
+
+.wrapper {
+  --wrapper-width: calc(100vw - 2 * var(--container-horizontal-padding, 25vw));
+  --wrapper-height: calc(var(--wrapper-width) * 0.4);
+  width: 100%;
+  height: var(--wrapper-height, 100%); /* 16rem */
+  margin-top: 96px;
+  margin-top: 6rem;
+  margin-top: 8vw;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--text-kick, "Poiret One"), var(--text-sans-signature, "Source Sans Pro"), sans-serif;
+  border: 2px solid var(--font-color);
+  box-shadow: 1rem 1rem 0 0 var(--font-color);
+  color: var(--font-color);
+  background-color: var(--background-color);
+  /* opacity: 0.9; */
+  transition:
+    background-color 0.5s ease-in-out,
+    color 0.5s ease-in-out,
+    border 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
+}
+
+.intro {
+  /* border: 1px solid goldenrod; */
+  width: 59%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.intro_title {
+  /* border: 1px dashed lightseagreen; */
+  font-size: 64px;
+  font-size: 4rem;
+  font-size: 4vw;
+  padding-left: 48px;
+  padding-left: 3rem;
+  padding-left: 3vw;
+  line-height: 1.5;
+}
+
+.intro_caption {
+  /* border: 1px dashed sandybrown; */
+  font-size: 32px;
+  font-size: 2rem;
+  font-size: 2vw;
+  padding-left: 64px;
+  padding-left: 4rem;
+  padding-left: 3.5vw;
+  line-height: 1;
+}
+
+.meta {
+  /* border: 1px dashed hotpink; */
+  width: 39%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10%;
+  position: relative;
+  z-index: 0;
+}
+
+.meta_item {
+  /* border: 1px solid gold; */
+  height: 56px;
+  height: 3.5rem;
+  height: 3.5vw;
+  line-height: 56px;
+  line-height: 3.5rem;
+  line-height: 3.5vw;
+}
+
+.meta_icon {
+  /* border: 1px solid burlywood; */
+  color: var(--font-color);
+  transition: color 0.5s ease-in-out;
+  width: 28px;
+  width: 1.75rem;
+  width: 1.75vw;
+  height: 28px;
+  height: 1.75rem;
+  height: 1.75vw;
+  vertical-align: middle;
+  margin-left: 24px;
+  margin-left: 1.5rem;
+  margin-left: 8%;
+  margin-right: 64px;
+  margin-right: 4rem;
+  margin-right: 20%;
+}
+
+.meta_text {
+  font-size: 32px;
+  font-size: 2rem;
+  font-size: 1.75vw;
+  vertical-align: middle;
+}
+
+a.meta_text {
+  color: var(--element-color-1);
+  cursor: pointer;
+}
+
+.meta:after {
+  border: 2px solid var(--font-color);
+  background-color: var(--accent-color-square);
+  content: "";
+  position: absolute;
+  height: var(--wrapper-height, 100%);
+  width: 25%;
+  top: 25%;
+  left: 0;
+  z-index: -1;
+  transition: border-color 0.5s ease-in-out;
+}
+
+.wrapper:before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 18vw;
+  height: 18vw;
+  width: calc(var(--wrapper-width, 40vw) * 0.35);
+  height: calc(var(--wrapper-width, 40vw) * 0.35);
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 100%;
+  border: solid 3px var(--accent-color-border);
+  right: -25%;
+  bottom: -41%;
+  transition: border 0.5s ease-in-out;
+}
+
+.wrapper:after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 18vw;
+  height: 18vw;
+  width: calc(var(--wrapper-width, 40vw) * 0.35);
+  height: calc(var(--wrapper-width, 40vw) * 0.35);
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 100%;
+  background-color: var(--accent-color-circle);
+  right: -27%;
+  bottom: -37%;
+  transition: background-color 0.5s ease-in-out;
+}
+
+/* tablet */
+@media screen and (max-width: 1008px) {
+  .wrapper {
+    margin-top: 64px;
+    margin-top: 4rem;
+    margin-top: 8vw;
+  }
+  .intro {
+    width: 49%;
+  }
+  .intro_title {
+    font-size: 48px;
+    font-size: 3rem;
+    font-size: 5vw;
+    padding-left: 64px;
+    padding-left: 4rem;
+    padding-left: 4vw;
+  }
+  .intro_caption {
+    font-size: 24px;
+    font-size: 1.5rem;
+    font-size: 2.8vw;
+    padding-left: 72px;
+    padding-left: 4.5rem;
+    padding-left: 4.5vw;
+  }
+  .meta {
+    /* border: 1px solid cyan; */
+    width: 49%;
+  }
+  .meta_item {
+    /* border: 1px solid coral; */
+    height: 48px;
+    height: 3rem;
+    height: 5.5vw;
+    line-height: 48px;
+    line-height: 3rem;
+    line-height: 5.5vw;
+  }
+  .meta_icon {
+    width: 28px;
+    width: 1.75rem;
+    width: 3vw;
+    height: 28px;
+    height: 1.75rem;
+    height: 3vw;
+    margin-left: 5.5%;
+  }
+  .meta_text {
+    font-size: 28px;
+    font-size: 1.75rem;
+    font-size: 3vw;
+  } 
+  .meta:after {
+    top: 20%;
+    width: 18%;
+  }
+  .wrapper:before {
+    right: -13%;
+    bottom: -38%;
+  }
+  .wrapper:after {
+    right: -15%;
+    bottom: -32%;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 688px) {
+  .wrapper {
+    --wrapper-height: calc(var(--wrapper-width) * 0.6);
+    margin-top: 32px;
+    margin-top: 2rem;
+    margin-top: 8vw;
+    box-shadow: 0.5rem 0.5rem 0 0 var(--font-color);
+  }
+  .intro {
+    width: 100%;
+  }
+  .intro_title {
+    font-size: 32px;
+    font-size: 2rem;
+    font-size: 8vw;
+    line-height: 1.2;
+    margin-top: 1rem;
+    padding-left: 24px;
+    padding-left: 1.5rem;
+    padding-left: 7vw;
+  }
+  .intro_caption {
+    font-size: 16px;
+    font-size: 1rem;
+    font-size: 5vw;
+    line-height: 1.2;
+    margin-top: 0.5rem;
+    padding-left: 24px;
+    padding-left: 1.5rem;
+    padding-left: 7.5vw;
+  }
+  .meta {
+    width: 100%;
+    justify-content: center;
+    padding-top: 0;
+  }
+  .meta_item {
+    /* border: 1px solid green; */
+    height: 42px;
+    height: 2.625rem;
+    height: 8vw;
+    line-height: 42px;
+    line-height: 2.625rem;
+    line-height: 8vw;
+  }
+  .meta_icon {
+    width: 20px;
+    width: 1.25rem;
+    width: 4vw;
+    height: 20px;
+    height: 1.25rem;
+    height: 4vw;
+    vertical-align: middle;
+    margin: 0 32px 0 48px;
+    margin: 0 2rem 0 3rem;
+    margin: 0 8% 0 11.5%;
+  }
+  .meta_text {
+    font-size: 20px;
+    font-size: 1.25rem;
+    font-size: 4vw;
+  }
+  .meta:after {
+    height: 120%;
+    left: 9%;
+    top: 5%;
+    width: 9%;
+  }
+  .wrapper:before {
+    right: -8%;
+    bottom: -35%;
+  }
+  .wrapper:after {
+    right: -10%;
+    bottom: -32%;
+  }
+}

@@ -1,0 +1,29 @@
+.container {
+  /* border: 2px solid slateblue; */
+  height: calc(100vh
+    - var(--nav-height, 4rem)
+    - 2*var(--nav-vertical-padding, 0.3125rem)
+    - 2*var(--container-vertical-padding, 1rem)
+  );
+  padding: var(--container-vertical-padding, 1rem) var(--container-horizontal-padding, 25%);
+  line-height: var(--container-line-height, 1.8);
+  overflow: scroll;
+}
+
+/* tablet */
+@media screen and (max-width: 1008px) {
+  .container {
+    padding: var(--container-vertical-padding, 1rem) var(--container-horizontal-padding, 15%);
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 688px) {
+  .container {
+    height: calc(100vh
+      - 2 * (var(--nav-height, 4rem) + 2*var(--nav-vertical-padding, 0.3125rem))
+      - 2 * var(--container-vertical-padding, 1rem)
+    );
+    padding: var(--container-vertical-padding, 1rem) var(--container-horizontal-padding, 7%);
+  }
+}

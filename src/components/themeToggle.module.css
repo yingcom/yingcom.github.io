@@ -1,0 +1,52 @@
+.toggle_wrapper {
+  display: flex;
+  align-items: center;
+  padding: var(--nav-vertical-padding, 0.3125rem) var(--nav-horizontal-padding, 1.5rem);
+}
+
+.toggle {
+  display: inline-block;
+  position: relative;
+  height: var(--theme-switch-height, 2.125rem); /* 34px; */
+  width: var(--theme-switch-width, 3.75rem); /* 60px; */
+}
+
+.toggle input {
+  /* display: none; */
+  opacity: 0;
+  /* height: 200px;
+  width: var(--theme-switch-width); */
+}
+
+.slider {
+  background: #ccc;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+  border-radius: var(--theme-switch-height, 2.125rem);
+}
+
+.slider:before {
+  background: #fff;
+  content: "";
+  position: absolute;
+  bottom: calc(var(--theme-switch-width, 3.75rem) / 15); /* 4px */
+  left: calc(var(--theme-switch-width, 3.75rem) / 15); /* 4px */
+  height: calc(var(--theme-switch-width, 3.75rem) - var(--theme-switch-height, 2.125rem)); /* 26px */
+  width: calc(var(--theme-switch-width, 3.75rem) - var(--theme-switch-height, 2.125rem)); /* 26px */
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input[id="ck"]:checked + .slider {
+  background: var(--switch-color);
+}
+
+input[id="ck"]:checked + .slider:before {
+  /* transform: translateX(26px); */
+  transform: translateX(calc(var(--theme-switch-width, 3.75rem) - var(--theme-switch-height, 2.125rem)));
+}

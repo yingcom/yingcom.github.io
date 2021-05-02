@@ -1,0 +1,82 @@
+/* very hacky way of changing the swiper theme color */
+:root {
+  --swiper-theme-color: var(--logo-color, #b95d90);
+}
+
+.container {
+  /* border: 2px solid seagreen; */
+  /* height: calc(100vh
+    - var(--nav-height, 4rem)
+    - 2*var(--nav-vertical-padding, 0.3125rem)
+    - 2*var(--container-vertical-padding, 1rem)
+  ); */
+  padding: var(--container-vertical-padding, 1rem) 15vw;
+}
+
+@media screen and (max-width: 688px) {
+  .container {
+    /* height: calc(100vh
+      - 2 * (var(--nav-height, 4rem) + 2*var(--nav-vertical-padding, 0.3125rem))
+      - 2 * var(--container-vertical-padding, 1rem)
+    ); */
+    padding: var(--container-vertical-padding, 1rem) 0;
+  }
+}
+
+.slideContainer {
+  /* border: 2px solid purple; */
+  margin-top: 4%;
+}
+
+.slideWrapper {
+  /* border: 2px dashed salmon; */
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.slide {
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: absolute;
+  top: 3%;
+  left: 6%;
+  width: 88%;
+  /* width: calc(88% - 2*var(--wrapperBorder, 2px)); */
+  height: calc(94% - 2rem);
+  /* height: calc(94% - 2rem - 2*var(--wrapperBorder, 2px)); */
+}
+
+/* tablet */
+@media screen and (max-width: 1008px) {
+  .slideContainer {
+    /* border: 2px solid slateblue; */
+    margin-left: -20%;
+    margin-right: -20%;
+  }
+  .slide {
+    left: 8%;
+    width: 84%;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 688px) {
+  .slideWrapper {
+    padding-bottom: 75%;
+  }
+  .slideContainer {
+    /* border: 2px solid orange; */
+    margin-left: 0;
+    margin-right: 0;
+    /* padding-left: 15%;
+    padding-right: 15%; */
+  }
+  .slide {
+    left: 4%;
+    width: 92%;
+    /* left: 8%;
+    width: 84%; */
+  }
+}

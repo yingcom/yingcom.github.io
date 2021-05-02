@@ -1,0 +1,10 @@
+import "@fontsource/exo-2"
+import "@fontsource/noto-sans-jp"
+import "@fontsource/noto-sans-sc"
+import "@fontsource/poiret-one"
+import "@fontsource/roboto"
+import "@fontsource/roboto-mono"
+import "@fontsource/source-sans-pro"
+
+import "./src/styles/global.css"
+import "./src/styles/layout_sbs.css"

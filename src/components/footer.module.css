@@ -1,0 +1,24 @@
+.normal {
+  /* border: 1px dashed salmon; */
+  text-align: center;
+  width: 100%;
+  font-size: calc(1rem * var(--text-scale-ratio, 1));
+}
+
+.altered {
+  /* border: 1px dashed lightseagreen; */
+  text-align: center;
+  width: 100%;
+  font-size: calc(1rem * var(--text-scale-ratio, 1));
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--nav-height) * 0.5);
+}
+
+/* mobile */
+@media screen and (max-width: 688px) {
+  .altered {
+    /* border: 1px dashed turquoise; */
+    margin-bottom: calc(var(--nav-height) * 0.75);
+  }
+}
