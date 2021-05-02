@@ -1,7 +1,7 @@
 :root {
   font-size: 100%;
   --text-scale-ratio: 1;
-  --nav-height: 4rem;
+  --nav-height: 3rem;
   --nav-vertical-padding: 0.3125rem; /* 5px */
   --nav-horizontal-padding: 1.5rem;
   --theme-switch-height: 2.125rem; /* 34px; */

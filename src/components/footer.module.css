@@ -12,13 +12,13 @@
   font-size: calc(1rem * var(--text-scale-ratio, 1));
   position: absolute;
   left: 0;
-  bottom: calc(var(--nav-height) * 0.5);
+  bottom: 1rem;
 }
 
 /* mobile */
 @media screen and (max-width: 688px) {
   .altered {
     /* border: 1px dashed turquoise; */
-    margin-bottom: calc(var(--nav-height) * 0.75);
+    margin-bottom: calc(var(--nav-height, 3rem) * 0.75) ; /* 36px */
   }
 }
