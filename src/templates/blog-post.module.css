@@ -96,6 +96,23 @@
   }
 }
 
+.post_content table {
+  margin-left: 1rem;
+}
+
+.post_content table th, .post_content table td {
+  padding: 0 0.5rem;
+}
+
+@media screen and (max-width: 688px) {
+  .post_content table {
+    margin-left: 0;
+  }
+  .post_content table th, .post_content table td {
+    padding: 0 0.25rem 0 0 ;
+  }
+}
+
 .post_content pre {
   /* margin: var(--codeblock-vertical-margin) 1rem 2rem; */
   margin-left: 1rem;

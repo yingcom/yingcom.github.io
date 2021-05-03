@@ -7,7 +7,7 @@ preview: "Use FFmpeg, Rubberband and SoX for time streching and pitch scaling"
 
 Musician likes to experiment with the keys and tempos of musical works. If it's hard to improvise on an accoustic instrument, you can try digital instrument that has built-in transpose function without changing your normal way of playing. Sound engineer can raise or lower the pitch of a sound with a pitch shifter in recording, or tranpose the soundtracks in a DAW in post-production. For those who are more comfortable with command lines, FFmpeg and SoX are great companions for audio processing. This article introduces FFmpeg, Rubberband and SoX commands for playback, format conversion, and ultimately, adjusting the tempo (time stretching) and pitch of an audio (pitch scaling or pitch shifting) to your taste in the terminal.  
 
-How will the Concerto in D Minor after Marcello by J.S. Bach (BWV 974) sound if it is played in C Minor? Check it out yourself with FFmpeg, SoX and Rubberband after you finish reading. 😉
+How will the Concerto in D Minor after Marcello by J.S. Bach (BWV 974) sound if it is played in C Minor? Check it out yourself after you finish reading. 😉
 
 
 # What is FFmpeg, Rubberband and SoX?
@@ -120,19 +120,40 @@ If you want to use Rubberband as an FFmpeg audio filter, you need to be careful 
 
 How about `sh> ffplay -i <input> -af rubberband=pitch=2`? Will I get a playback above the original key by 2 semitones? It turns out it is one octave higher! Let's reduce the pitch value from 2 to 0.5. It ends up with one octave lower than the original key. It's obvious that the value for the pitch parameter in FFmpeg is different from the command line scenario. How can I get the value for shifting down by 2 semitones with `sh> ffplay` then?
 
-To answer this question, a bit of musical theory is needed. The calculation of a [semitone](https://en.wikipedia.org/wiki/Semitone) depends on the tuning system in use. In twelve-tone equal temperament, each semitone is equal to one twelfth of an octave. The ratios of frequency between two adjacent octaves is 2:1. The ratio of the frequency between two adjacent semitones should be [twelfth root of two](https://en.wikipedia.org/wiki/Twelfth_root_of_two).
+To answer this question, a bit of musical theory is needed. The calculation of a [semitone](https://en.wikipedia.org/wiki/Semitone) depends on the tuning system in use. In twelve-tone equal temperament, each semitone is equal to one twelfth of an octave. The ratio of the frequency between two adjacent octaves is 2:1. The ratio of the frequency between two adjacent semitones is [twelfth root of two](https://en.wikipedia.org/wiki/Twelfth_root_of_two).
 
-12 semitones (1 octave) = 2  
+<!--
+12 semitones (1 octave) higher: 2  
 1 semitone higher: 2^(1/12) ≈ 1.0594630944  
+1 semitone lower: 1 / 2^(1/12) ≈ 0.9438743127  
 2 semitones higher: 2^(1/12) * 2^(1/12) ≈ 1.1224620483  
 2 semitones lower: 1 / (2^(1/12) * 2^(1/12)) ≈ 0.8908987181
+-->
 
-If the original key is scaled to 1, the ratio for shifting the pitch down by 2 semitones should be 0.8908987181. You can use the Rubberband audio filter in FFmpeg to achieve the transposition.
+<!--
+12 semitones or 1 octave higher: 2<sup><span class="frac" role="math"><span class="num">12</span>⁄<span class="den">12</span></span></sup> = 2  
+1 semitone higher: 2<sup><span class="frac" role="math"><span class="num">1</span>⁄<span class="den">12</span></span></sup> ≈ 1.0594630944  
+2 semitones higher: 2<sup><span class="frac" role="math"><span class="num">1</span>⁄<span class="den">6</span></span></sup> ≈ 1.1224620483  
+1 semitone lower: 1 ÷ 2<sup><span class="frac" role="math"><span class="num">1</span>⁄<span class="den">12</span></span></sup> ≈ 0.9438743127  
+2 semitones lower: 1 ÷ 2<sup><span class="frac" role="math"><span class="num">1</span>⁄<span class="den">6</span></span></sup> ≈ 0.8908987181
+-->
+
+| Shift distance| Multiplier   | Ratio  |
+|:--------------|:-------------| :------|
+| +12 semitones | 2 <sup><span class="frac" role="math"><span class="num">12</span>⁄<span class="den">12</span></span></sup> | 2 |
+| +2 semitones  | 2<sup><span class="frac" role="math"><span class="num">1</span>⁄<span class="den">6</span></span></sup> | 1.1224620483 |
+| +1 semitone   | 2 <sup><span class="frac" role="math"><span class="num">1</span>⁄<span class="den">12</span></span></sup> | 1.0594630944 |
+| base          | 2 <sup><span class="frac" role="math"><span class="num">0</span>⁄<span class="den">12</span></span></sup> | 1 |
+| -1 semitone   | 1 &divide; 2<sup><span class="frac" role="math"><span class="num">1</span>⁄<span class="den">12</span></span></sup> | 0.9438743127|
+| -2 semitones  | 1 &divide; 2<sup><span class="frac" role="math"><span class="num">1</span>⁄<span class="den">6</span></span></sup> | 0.8908987181 |
+| -12 semitones | 1 &divide; 2 <sup><span class="frac" role="math"><span class="num">12</span>⁄<span class="den">12</span></span></sup> | 0.5 |
+
+If the original key is scaled to 1, the ratio for shifting the pitch down by 2 semitones is 0.8908987181. You can use the Rubberband audio filter in FFmpeg to achieve the transposition.
 
 ```sh
 ffplay -i <input> -af rubberband=pitch=0.8908987181            # for playback
 ffmpeg -i <input> -af rubberband=pitch=0.8908987181 <ouptput>  # for conversion
 ```
 
-The syntax for shifting pitch is more musician-friendly in SoX and the Rubberband CLI than the audio filter in FFmpeg. The audio quality from `md> librubberband` in FFmpeg is the least optimal. The Rubberband CLI produces the best audio quality and the command syntax makes sense. The only problem with Rubberband CLI is the absence of a playback command similar to the `sh> play <input>` command in SoX. Therefore I prefer SoX for pitch-shifting playback and the Rubberband CLI for the conversion.
+The syntax for shifting pitch is more musician-friendly in SoX and the Rubberband CLI than the audio filter in FFmpeg. The audio quality from `md> librubberband` in FFmpeg is the least optimal. The Rubberband CLI produces the best audio quality and the command syntax makes sense. The only problem with Rubberband CLI is the absence of a playback command similar to the `sh> play <input>` command in SoX. Therefore SoX is preferred for playback and save the Rubberband CLI for pitch-shifting conversion.
 
