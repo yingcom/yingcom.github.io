@@ -1,6 +1,7 @@
 .post_container {
   /* border: 3px solid purple; */
   padding: var(--post-vertical-padding) var(--post-horizontal-padding);
+  overflow: scroll;
 }
 
 .post_content {

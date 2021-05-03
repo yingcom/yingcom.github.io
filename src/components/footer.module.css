@@ -3,6 +3,7 @@
   text-align: center;
   width: 100%;
   font-size: calc(1rem * var(--text-scale-ratio, 1));
+  line-height: 1.5;
 }
 
 .floor {
@@ -20,7 +21,10 @@
 @media screen and (max-width: 688px) {
   .normal {
     /* border: 1px dashed blue; */
-    margin: 10% 0 0;
+    /* text-align: left;
+    padding-left: 1rem; */
+    position: relative;
+    margin-top: -5%;
   }
   .floor {
     /* border: 1px dashed teal; */
