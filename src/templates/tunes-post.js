@@ -53,9 +53,8 @@ const TunesPost = ({ data, location }) => {
                 )}
               </span>
             </div>
-
+          <Footer></Footer>
         </div>
-        <Footer></Footer>
       </Container>
     </div>
   )

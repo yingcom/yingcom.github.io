@@ -25,7 +25,7 @@
 
 .slideContainer {
   /* border: 2px solid purple; */
-  margin-top: 4%;
+  margin-top: 0; /* 4% */
 }
 
 .slideWrapper {

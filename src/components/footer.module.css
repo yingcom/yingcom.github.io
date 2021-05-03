@@ -5,20 +5,26 @@
   font-size: calc(1rem * var(--text-scale-ratio, 1));
 }
 
-.altered {
+.floor {
   /* border: 1px dashed lightseagreen; */
   text-align: center;
   width: 100%;
   font-size: calc(1rem * var(--text-scale-ratio, 1));
+  line-height: 1.5;
   position: absolute;
   left: 0;
-  bottom: 1rem;
+  bottom: 1.5rem;
 }
 
 /* mobile */
 @media screen and (max-width: 688px) {
-  .altered {
-    /* border: 1px dashed turquoise; */
-    margin-bottom: calc(var(--nav-height, 3rem) * 0.75) ; /* 36px */
+  .normal {
+    /* border: 1px dashed blue; */
+    margin: 10% 0 0;
+  }
+  .floor {
+    /* border: 1px dashed teal; */
+    bottom: 0;
+    margin-bottom: calc(var(--nav-height, 3rem) + 0.5rem);
   }
 }

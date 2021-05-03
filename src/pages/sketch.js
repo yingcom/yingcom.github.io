@@ -17,7 +17,7 @@ const Sketch = ({ data, location }) => {
       <Favicon></Favicon>
       <Navigation></Navigation>
       <Carousel></Carousel>
-      <Footer></Footer>
+      <Footer placement='floor'></Footer>
     </div>
   )
 }

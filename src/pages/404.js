@@ -22,7 +22,7 @@ const NotFound = ({ data, location }) => {
           title: "Ooops ...",
           caption: "It looks like that page doesn't exist."
         }}></HeaderAlt>
-       <Footer placement='altered'></Footer>
+       <Footer placement='floor'></Footer>
       </Container>
     </div>
   )

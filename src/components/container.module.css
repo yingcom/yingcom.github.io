@@ -1,7 +1,7 @@
 .container {
   /* border: 2px solid slateblue; */
   height: calc(100vh
-    - var(--nav-height, 4rem)
+    - var(--nav-height, 3rem)
     - 2*var(--nav-vertical-padding, 0.3125rem)
     - 2*var(--container-vertical-padding, 1rem)
   );

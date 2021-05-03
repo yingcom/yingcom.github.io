@@ -19,7 +19,7 @@ export default function Home({ data, location }) {
       <Navigation></Navigation>
       <Container>
         <Jumbotron></Jumbotron>
-        <Footer placement='altered'></Footer>
+        <Footer placement='floor'></Footer>
       </Container>
     </div>
   )
