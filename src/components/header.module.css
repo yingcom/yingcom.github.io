@@ -17,7 +17,7 @@
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  font-family: var(--text-sans-signature, sans-serif);
+  font-family: var(--text-sans-signature, "Source Sans Pro"), sans-serif;
   border: 2px solid var(--font-color);
   box-shadow: 1rem 1rem 0 0 var(--font-color);
   color: var(--font-color);
@@ -161,10 +161,26 @@ a.meta_text {
     right: -19%;
     bottom: -32%;
   }
+  .meta_icon {
+    width: 24px;
+    width: 1.5rem;
+    width: 2vw;
+    height: 24px;
+    height: 1.5rem;
+    height: 2vw;
+  }
+  .meta_text {
+    font-size: 24px;
+    font-size: 1.5rem;
+    font-size: 1.8vw;
+  }
 }
 
 /* tablet */
 @media screen and (max-width: 1008px) {
+  .wrapper {
+    box-shadow: 0.75rem 0.75rem 0 0 var(--font-color);
+  }
   .intro_title {
     font-size: 24px;
     font-size: 1.5rem;
@@ -177,16 +193,16 @@ a.meta_text {
     height: 20px;
     height: 1.25rem;
     height: 2.25vw;
-    margin-left: 5.5%;
+    margin-left: 7%;
   }
   .meta_text {
     font-size: 20px;
     font-size: 1.25rem;
     font-size: 2.25vw;
-  } 
+  }
   .meta:after {
     top: 25%;
-    width: 18%;
+    width: 20%;
   }
   .wrapper:before {
     width: calc(40vw * 0.55);

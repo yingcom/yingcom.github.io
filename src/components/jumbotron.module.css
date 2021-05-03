@@ -1,16 +1,20 @@
 .outerWrapper {
   position: relative;
   z-index: 0;
+  padding-bottom: 35%;
+  height: 0;
+  /* margin: 5%; */
+  margin-left: 0;
+  margin-right: 3%;
+  margin-top: 15%;
 }
 
 .wrapper {
-  --wrapper-width: calc(100vw - 2 * var(--container-horizontal-padding, 25vw));
-  --wrapper-height: calc(var(--wrapper-width) * 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: var(--wrapper-height, 100%); /* 16rem */
-  margin-top: 96px;
-  margin-top: 6rem;
-  margin-top: 8vw;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   font-family: var(--text-kick, "Poiret One"), var(--text-sans-signature, "Source Sans Pro"), sans-serif;
@@ -28,7 +32,7 @@
 
 .intro {
   /* border: 1px solid goldenrod; */
-  width: 59%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,10 +43,9 @@
   font-size: 64px;
   font-size: 4rem;
   font-size: 4vw;
-  padding-left: 48px;
-  padding-left: 3rem;
-  padding-left: 3vw;
   line-height: 1.5;
+  padding-left: 10%;
+  padding-right: 5%;
 }
 
 .intro_caption {
@@ -50,43 +53,38 @@
   font-size: 32px;
   font-size: 2rem;
   font-size: 2vw;
-  padding-left: 64px;
-  padding-left: 4rem;
-  padding-left: 3.5vw;
   line-height: 1;
+  padding-left: 12%;
+  padding-right: 5%;
 }
 
 .meta {
   /* border: 1px dashed hotpink; */
-  width: 39%;
+  width: 40%;
+  padding-top: 12%;
+  position: relative;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 10%;
-  position: relative;
-  z-index: 0;
 }
 
 .meta_item {
   /* border: 1px solid gold; */
-  height: 56px;
-  height: 3.5rem;
-  height: 3.5vw;
-  line-height: 56px;
-  line-height: 3.5rem;
-  line-height: 3.5vw;
+  width: 100%;
+  height: 27%;
 }
 
 .meta_icon {
-  /* border: 1px solid burlywood; */
+  border: 1px solid burlywood;
   color: var(--font-color);
   transition: color 0.5s ease-in-out;
   width: 28px;
   width: 1.75rem;
-  width: 1.75vw;
+  width: 1.8vw;
   height: 28px;
   height: 1.75rem;
-  height: 1.75vw;
+  height: 1.8vw;
   vertical-align: middle;
   margin-left: 24px;
   margin-left: 1.5rem;
@@ -97,9 +95,9 @@
 }
 
 .meta_text {
-  font-size: 32px;
-  font-size: 2rem;
-  font-size: 1.75vw;
+  font-size: 28px;
+  font-size: 1.75rem;
+  font-size: 1.8vw;
   vertical-align: middle;
 }
 
@@ -113,7 +111,7 @@ a.meta_text {
   background-color: var(--accent-color-square);
   content: "";
   position: absolute;
-  height: var(--wrapper-height, 100%);
+  height: 100%;
   width: 25%;
   top: 25%;
   left: 0;
@@ -128,14 +126,14 @@ a.meta_text {
   z-index: -1;
   width: 18vw;
   height: 18vw;
-  width: calc(var(--wrapper-width, 40vw) * 0.35);
-  height: calc(var(--wrapper-width, 40vw) * 0.35);
+  width: calc(40vw * 0.35);
+  height: calc(40vw * 0.35);
   min-width: 150px;
   min-height: 150px;
   border-radius: 100%;
   border: solid 3px var(--accent-color-border);
-  right: -25%;
-  bottom: -41%;
+  right: -20%;
+  bottom: -37%;
   transition: border 0.5s ease-in-out;
 }
 
@@ -146,79 +144,88 @@ a.meta_text {
   z-index: -2;
   width: 18vw;
   height: 18vw;
-  width: calc(var(--wrapper-width, 40vw) * 0.35);
-  height: calc(var(--wrapper-width, 40vw) * 0.35);
+  width: calc(40vw * 0.35);
+  height: calc(40vw * 0.35);
   min-width: 150px;
   min-height: 150px;
   border-radius: 100%;
   background-color: var(--accent-color-circle);
-  right: -27%;
-  bottom: -37%;
+  right: -21%;
+  bottom: -32%;
   transition: background-color 0.5s ease-in-out;
+}
+
+/* MDPI laptop */
+@media screen and (max-width: 1376px) {
+  .wrapper:before {
+    width: calc(40vw * 0.45);
+    height: calc(40vw * 0.45);
+    right: -18%;
+    bottom: -37%;
+  }
+  .wrapper:after {
+    width: calc(40vw * 0.45);
+    height: calc(40vw * 0.45);
+    right: -19%;
+    bottom: -32%;
+  }
+  .meta_icon {
+    width: 28px;
+    width: 1.75rem;
+    width: 2.5vw;
+    height: 28px;
+    height: 1.75rem;
+    height: 2.2vw;
+  }
+  .meta_text {
+    font-size: 28px;
+    font-size: 1.75rem;
+    font-size: 2.2vw;
+  }
 }
 
 /* tablet */
 @media screen and (max-width: 1008px) {
   .wrapper {
-    margin-top: 64px;
-    margin-top: 4rem;
-    margin-top: 8vw;
-  }
-  .intro {
-    width: 49%;
+    box-shadow: 0.75rem 0.75rem 0 0 var(--font-color);
   }
   .intro_title {
     font-size: 48px;
     font-size: 3rem;
-    font-size: 5vw;
-    padding-left: 64px;
-    padding-left: 4rem;
-    padding-left: 4vw;
+    font-size: 6vw;
   }
   .intro_caption {
     font-size: 24px;
     font-size: 1.5rem;
-    font-size: 2.8vw;
-    padding-left: 72px;
-    padding-left: 4.5rem;
-    padding-left: 4.5vw;
-  }
-  .meta {
-    /* border: 1px solid cyan; */
-    width: 49%;
-  }
-  .meta_item {
-    /* border: 1px solid coral; */
-    height: 48px;
-    height: 3rem;
-    height: 5.5vw;
-    line-height: 48px;
-    line-height: 3rem;
-    line-height: 5.5vw;
+    font-size: 3vw;
   }
   .meta_icon {
-    width: 28px;
-    width: 1.75rem;
-    width: 3vw;
-    height: 28px;
-    height: 1.75rem;
-    height: 3vw;
-    margin-left: 5.5%;
+    width: 20px;
+    width: 1.25rem;
+    width: 2.5vw;
+    height: 20px;
+    height: 1.25rem;
+    height: 2.5vw;
+    margin-left: 6%;
   }
   .meta_text {
-    font-size: 28px;
-    font-size: 1.75rem;
-    font-size: 3vw;
+    font-size: 20px;
+    font-size: 1.25rem;
+    font-size: 2.5vw;
   } 
   .meta:after {
-    top: 20%;
-    width: 18%;
+    top: 25%;
+    width: 20%;
   }
   .wrapper:before {
+    width: calc(40vw * 0.55);
+    height: calc(40vw * 0.55);
     right: -13%;
     bottom: -38%;
   }
   .wrapper:after {
+    width: calc(40vw * 0.55);
+    height: calc(40vw * 0.55);
     right: -15%;
     bottom: -32%;
   }
@@ -226,11 +233,12 @@ a.meta_text {
 
 /* mobile */
 @media screen and (max-width: 688px) {
+  .outerWrapper {
+    margin-top: 5%;
+    padding-bottom: 56.25%;
+    line-height: 1;
+  }
   .wrapper {
-    --wrapper-height: calc(var(--wrapper-width) * 0.6);
-    margin-top: 32px;
-    margin-top: 2rem;
-    margin-top: 8vw;
     box-shadow: 0.5rem 0.5rem 0 0 var(--font-color);
   }
   .intro {
@@ -241,63 +249,57 @@ a.meta_text {
     font-size: 2rem;
     font-size: 8vw;
     line-height: 1.2;
-    margin-top: 1rem;
-    padding-left: 24px;
-    padding-left: 1.5rem;
-    padding-left: 7vw;
+    margin-bottom: 0.25rem;
+    padding-left: 10%;
+    padding-right: 5%;
   }
   .intro_caption {
     font-size: 16px;
     font-size: 1rem;
     font-size: 5vw;
     line-height: 1.2;
-    margin-top: 0.5rem;
-    padding-left: 24px;
-    padding-left: 1.5rem;
-    padding-left: 7.5vw;
+    padding-left: 11%;
+    padding-right: 5%;
   }
   .meta {
     width: 100%;
-    justify-content: center;
+    /* justify-content: center; */
     padding-top: 0;
   }
   .meta_item {
     /* border: 1px solid green; */
-    height: 42px;
-    height: 2.625rem;
-    height: 8vw;
-    line-height: 42px;
-    line-height: 2.625rem;
-    line-height: 8vw;
+    height: 27%;
   }
   .meta_icon {
-    width: 20px;
-    width: 1.25rem;
-    width: 4vw;
-    height: 20px;
-    height: 1.25rem;
-    height: 4vw;
+    width: 16px;
+    width: 1rem;
+    width: 5vw;
+    height: 16px;
+    height: 1rem;
+    height: 5vw;
     vertical-align: middle;
-    margin: 0 32px 0 48px;
-    margin: 0 2rem 0 3rem;
-    margin: 0 8% 0 11.5%;
+    margin: 2% 7% 0 13%;
   }
   .meta_text {
-    font-size: 20px;
-    font-size: 1.25rem;
-    font-size: 4vw;
+    font-size: 18px;
+    font-size: 1.125rem;
+    font-size: 5vw;
   }
   .meta:after {
     height: 120%;
-    left: 9%;
-    top: 5%;
     width: 9%;
+    left: 11%;
+    top: 7%;
   }
   .wrapper:before {
+    width: calc(40vw * 0.75);
+    height: calc(40vw * 0.75);
     right: -8%;
     bottom: -35%;
   }
   .wrapper:after {
+    width: calc(40vw * 0.75);
+    height: calc(40vw * 0.75);
     right: -10%;
     bottom: -32%;
   }
