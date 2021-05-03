@@ -116,11 +116,11 @@ According to the [Rubberband command line utility help guide](https://breakfastq
 rubberband --pitch -2 <input> <ouptput>
 ```
 
-If you want to use Rubberband as an FFmpeg audio filter, you need to be careful with the value for the scaled pitch. For instance, this command `sh> ffplay -i <input> -af rubberband=pitch=-2` will throw an out-of-range error, where the value for the pitch parameter should fall somewhere between 0.01 and 100. Since a person normally can hear sounds between 20 to 20,000 Hz, is this somehow related the range of the pitch parameter?
+If you want to use Rubberband as an FFmpeg audio filter, you need to be careful with the value for the scaled pitch. For instance, this command `sh> ffplay -i <input> -af rubberband=pitch=-2` will throw an out-of-range error, where the value for the pitch parameter should fall somewhere between 0.01 and 100. Since a person normally can hear the sounds between 20 to 20,000 Hz, is this somehow related to the pitch value range in `md> librubberband`?
 
-How about `sh> ffplay -i <input> -af rubberband=pitch=2`? Will I get a playback above the original key by 2 semitones? It turns out it is one octave higher! Let's reduce the pitch value from 2 to 0.5. It ends up with one octave lower than the original key. It's obvious that the value for the pitch parameter in FFmpeg is different from the command line scenario. How can I get the value for shifting down by 2 semitones with `sh> ffplay` then?
+How about changing the command to this: `sh> ffplay -i <input> -af rubberband=pitch=2`? Will I get a shift of 2 semitones above the original key? It turns out it's one octave higher! Reducing the pitch value to 0.5 will end up with one octave lower than the original key. It's obvious that the pitch parameter in the FFmpeg audio filter is different from the Rubberband command line scenario. How can I calculate the value for shifting down by 2 semitones with `sh> ffplay` then?
 
-To answer this question, a bit of musical theory is needed. The calculation of a [semitone](https://en.wikipedia.org/wiki/Semitone) depends on the tuning system in use. In twelve-tone equal temperament, each semitone is equal to one twelfth of an octave. The ratio of the frequency between two adjacent octaves is 2:1. The ratio of the frequency between two adjacent semitones is [twelfth root of two](https://en.wikipedia.org/wiki/Twelfth_root_of_two).
+To answer this question, a bit of musical theory is needed. The calculation of a [semitone](https://en.wikipedia.org/wiki/Semitone) depends on the tuning system in use. In twelve-tone equal temperament, each semitone is equal to one twelfth of an octave. The ratio of the frequencies between two adjacent octaves is 2:1. The ratio of the frequencies between two adjacent semitones is [twelfth root of two](https://en.wikipedia.org/wiki/Twelfth_root_of_two).
 
 <!--
 12 semitones (1 octave) higher: 2  
@@ -155,5 +155,5 @@ ffplay -i <input> -af rubberband=pitch=0.8908987181            # for playback
 ffmpeg -i <input> -af rubberband=pitch=0.8908987181 <ouptput>  # for conversion
 ```
 
-The syntax for shifting pitch is more musician-friendly in SoX and the Rubberband CLI than the audio filter in FFmpeg. The audio quality from `md> librubberband` in FFmpeg is the least optimal. The Rubberband CLI produces the best audio quality and the command syntax makes sense. The only problem with Rubberband CLI is the absence of a playback command similar to the `sh> play <input>` command in SoX. Therefore SoX is preferred for playback and save the Rubberband CLI for pitch-shifting conversion.
+The syntaxes for pitch-shifting in SoX and the Rubberband CLI are more musician-friendly than the audio filter in FFmpeg. The audio quality from `md> librubberband` in FFmpeg is the least optimal. Rubberband CLI produces the best audio quality and its syntax makes sense. The only problem is the absence of a playback command similar to the `sh> play <input>` command in SoX. Therefore you can use SoX for a convenient playback and the Rubberband CLI for high quality conversion.
 
