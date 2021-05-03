@@ -3,10 +3,9 @@
   z-index: 0;
   padding-bottom: 35%;
   height: 0;
-  /* margin: 5%; */
   margin-left: 0;
   margin-right: 3%;
-  margin-top: 15%;
+  margin-top: 8%;
 }
 
 .wrapper {
@@ -157,6 +156,9 @@ a.meta_text {
 
 /* MDPI laptop */
 @media screen and (max-width: 1376px) {
+  .outerWrapper {
+    margin-top: 5%;
+  }
   .wrapper:before {
     width: calc(40vw * 0.45);
     height: calc(40vw * 0.45);
