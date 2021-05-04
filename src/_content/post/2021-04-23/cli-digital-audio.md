@@ -5,16 +5,16 @@ tags: ["CLI", "audio"]
 preview: "Use FFmpeg, Rubberband and SoX for time streching and pitch scaling"
 ---
 
-Musician likes to experiment with the keys and tempos of musical works. If it's hard to adapt to a new key on accoustic instrument, you can try digital instrument that has built-in transpose function without changing the original way of playing. Sound engineer can raise or lower the pitch of a sound with a pitch shifter in recording, or tranpose the soundtracks in a DAW in post production. For those who are more comfortable with command lines, FFmpeg and SoX are great companions. This article introduces FFmpeg, Rubberband and SoX for audio playback, format conversion, and ultimately adjusting the tempo and pitch of a soudntrack to your taste in the terminal.
+Musician likes to experiment with the keys and tempos of musical works. If it's hard to adapt to a new key on accoustic instrument, you can try digital instrument that has built-in transpose function without changing the original way of playing. Sound engineer can raise or lower the pitch of a sound with a pitch shifter in recording, or tranpose the soundtracks in a DAW in post production. For those who are comfortable with the command-line interface, FFmpeg and SoX are great companions for audio processing. This article introduces FFmpeg, Rubberband and SoX for audio playback, format conversion, and ultimately adjusting the tempo and pitch of a soudntrack to your taste in the terminal.
 
-How will the Concerto in D Minor after Marcello (BWV 974) by J.S. Bach sound if it is played in C Minor? Check it out yourself after you finish reading. 😉
+How will the Concerto in D Minor after Marcello (BWV 974) by J.S. Bach sound in C Minor? Check it out yourself after you finish reading. 😉
 
 
 # What is FFmpeg, Rubberband and SoX?
 
 > FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge - https://www.ffmpeg.org/about.html
 
-FFmpeg has an large suite of libraries and programs for processing audio, video and other multimedia files and streams. First released in 2000, FFmpeg has been used as a core module for handling multimedia in applications such as YouTube, Chrome, iTunes, VLC player, Handbrake, and Blender, just to name a few. If you are unfamiliar with FFmpeg, check out this [tutorial](https://slhck.info/ffmpeg-encoding-course/) for a general introduction.
+FFmpeg has an large suite of libraries and programs for processing audio, video and other multimedia files and streams. First released in 2000, FFmpeg has been used as a core module for handling multimedia in software applications such as YouTube, Chrome, iTunes, VLC media player, Handbrake, and Blender, just to name a few. If you are unfamiliar with FFmpeg, check out this [tutorial](https://slhck.info/ffmpeg-encoding-course/) for an introduction.
 
 > Rubberband is an audio time-stretching and pitch-shifting library and utility program. It includes a simple (free) command-line utility program that you can use for fixed adjustments to the speed and pitch of existing audio files - https://breakfastquay.com/rubberband/
 
@@ -29,9 +29,9 @@ SoX is almost a decade older than FFmpeg. Unlike FFmpeg which has encompassing l
 
 Checking meta data is the first step in quality control. You can extract the meta data of a single audio file with the command `sh> ffprobe <input>` in FFmpeg, or use `sh> soxi <input1> [input2] [input3]` to display information for multiple audio files with SoX.
 
-SoX only supports audio formats that are not patent-encumbered or of which the patent has expired. For exmple, it can process audio files with an extension of `md>mp3`, `md>wav`, `md>aiff`, `md>flac`, `md>vorbis`, `md>opus`, `md>ogg`, but cannot read the compatible audio bitstreams inside `md>webm`, `md>mp4`, `md>m4a` or `md>m4b` containers. For a complete list of the supported audio formats, please refer to the official [documentation](http://sox.sourceforge.net/soxformat.html). For files that cannot be handled by SoX, FFmpeg is here to rescue. It can transcode or transmux (changing containers without re-encoding) almost any audio with decent quality by default.
+SoX only supports audio formats that are not patent-encumbered or of which the patent has expired. For exmple, it can process audio files with an extension of `md>mp3`, `md>wav`, `md>aiff`, `md>flac`, `md>vorbis`, `md>opus`, `md>ogg`, but cannot read the compatible audio bitstreams inside `md>webm`, `md>mp4`, `md>m4a` or `md>m4b` containers. For a complete list of the supported audio formats, please refer to the official [documentation](http://sox.sourceforge.net/soxformat.html). For files that cannot be processed by SoX, FFmpeg is here to rescue. It can transcode or transmux (changing containers without re-encoding) audio in almost any format with decent quality by default.
 
-Playback is an intuitive way to check for potential problems. Both FFmpeg and Sox allows you to play audio with compatible format in the terminal. FFmpeg ships a `sh> ffplay` command for multimedia playback. The `sh> -nodisp` flag is optional if you don't want a graphical display in playback.
+Playback is an intuitive way to check for potential problems. Both FFmpeg and Sox allows you to play audio with compatible formats in the terminal. FFmpeg ships a `sh> ffplay` command for multimedia playback. The `sh> -nodisp` flag is optional if you don't want the graphical display in playback.
 
 ```sh
 ffplay input.wav -nodisp
@@ -52,7 +52,7 @@ play input.wav trim 00:15 =00:30 -20
 
 # Transcoding and Generation Loss
 
-You can convert an audio from one format into another as long as both formats are supported in the tool of your choice. FFmpeg is more suitable for this task thanks to its massive container library (libavformat) and codec library (libavcodec). You can check the supported containers with `sh> ffmpeg -formats` and the supported codec with `sh> ffmpeg -codecs`.
+You can convert an audio from one format into another as long as both formats are supported in the tool of your choice. FFmpeg is more suitable for this task thanks to its massive container library (libavformat) and codec library (libavcodec). You can check the supported containers with `sh> ffmpeg -formats` and the supported codecs with `sh> ffmpeg -codecs`.
 
 Here are the commands for converting audio formats with SoX and FFmpeg respectively:
 
@@ -61,7 +61,7 @@ sox input.wav output.mp3        # format conversion with SoX
 ffmpeg -i input.wav output.mp3  # format conversion with FFmpeg
 ```
 
-Generation loss can be introduced in the transcoding process. The above command will re-encode the source audio with the target codec. If you just want to change containers (transmuxing) and the target codec is the same as the source codec, you really should just copy the original codec and avoid re-encoding. You can use the `sh> -c:a copy` flag, where `sh> -c:a` means the codec of the audio.
+Generation loss can be introduced in transcoding. The above command will re-encode the source audio with the target codec. If you just want to change containers (transmuxing) and the target codec is the same as the source codec, you really should just copy the original codec and avoid re-encoding. You can add the `sh> -c:a copy` flag, where `sh> -c:a` means the audio codec.
 
 ```sh
 ffmpeg -i input.ogg -c:a copy output.webm
@@ -70,15 +70,15 @@ ffmpeg -i input.ogg -c:a copy output.webm
 
 # Changing Tempo
 
-You can pick SoX or FFmpeg for changing the tempo of an existing audio file. It is also called time stretching. SoX has a straigh-forward command syntax and a decent quality for the output. FFmpeg has a slightly more complicated syntax, and if used with the right filter, it can produce a slightly better output.
+You can pick SoX or FFmpeg for changing the tempo of an existing audio file. The trick is also called time stretching. SoX has a straigh-forward command and a decent quality for the output. FFmpeg has a slightly more complicated command syntax, and if used with the right filter, it can produce a slightly better output.
 
-In SoX you can change the tempo in playback with the command `sh> play <input> tempo [factor]` where `md> factor` is the ratio of new tempo to the old tempo, so 1.2 speeds up the tempo by 20% and 0.7 slows it down by 30%. Since the `md> tempo` effect uses the `md> rate` effect which changes the sampling rate, the audio bitrate drops after conversion and the difference might be perceptible. Use the command below to save a copy.
+In SoX you can change the tempo in playback with the command `sh> play <input> tempo [factor]` where `md> factor` is the ratio of new tempo to the old tempo, so 1.2 speeds up the tempo by 20% and 0.7 slows it down by 30%. Since the `md> tempo` effect uses the `md> rate` effect in SoX which changes the sampling rate, the bitrate drops in the output audio and the difference might be perceptible. Use the command below to save a copy.
 
 ```sh
 sox <input> <output> tempo 1.2
 ```
 
-An audio filter is required in FFmpeg for changing a soundtrack tempo. You can check the filters library in FFmpeg (libavfilter) via `sh> ffmpeg -filters`. FFmpeg accepts multiple filters, which can be daisy-chained by comma (see the command syntax below). The `sh> -af` flag is equivalent to `sh> -filter:a` for audio filter. Likewise the `sh> -vf` is a shorthand for `sh> -filter:v` for video filter. A filter can have multiple parameters with a set of default values. Parameters of a filter are joined by colon.
+An audio filter is required in FFmpeg for changing the tempo of a soundtrack. You can check the filters library in FFmpeg (libavfilter) via `sh> ffmpeg -filters`. FFmpeg accepts multiple filters, which can be daisy-chained by comma (see the command syntax below). The `sh> -af` flag is equivalent to `sh> -filter:a` for audio filter. Likewise the `sh> -vf` is a shorthand for `sh> -filter:v` for video filter. A filter can have multiple parameters with a set of default values. Parameters of a filter are joined by colon.
 
 ```sh
 ffmpeg -i <input> -af "filter1,filter2,filter3" <output>
@@ -99,14 +99,14 @@ Rubberband produces the best audio quality. SoX has a decent quality and its com
 
 # Shifting Pitch
 
-SoX has a very good support for shifting pitch with `sh> pitch [-][shift]`, where the `sh> [shift]` indicates a shift value at 100th of a semitone, with a positive or negative sign for the shift direction. The following commands show how to lower the pitch by 2 semitones.
+SoX has a very good support for shifting pitch with `sh> pitch [-][shift]`, where the `sh> [shift]` indicates a shift value at 100th of a semitone, with an optional positive sign or a negative sign for the shift direction. The following commands show how to lower the pitch by 2 semitones.
 
 ```sh
 play <input> pitch -200           # for playback
 sox <input> <output> pitch -200   # for conversion
 ```
 
-When it comes to Rubberband, the pitch shifting syntax is somewhat problematic. It depends on whether it's used as a command-line utility program or as an FFmpeg audio filter. Let's look at the command line scenario first.
+When it comes to Rubberband, the pitch shifting syntax is somewhat problematic. It depends on whether it's used as a command-line utility program or as an FFmpeg audio filter. Let's look at the command-line scenario first.
 
 According to the [Rubberband command line utility help guide](https://breakfastquay.com/rubberband/usage.txt), which is also available via `sh> rubberband -h` in the terminal, you can lower the pitch by 2 semitones with the following command, where the `sh> --pitch` flag is interchangeable with `sh> -p`.
 
