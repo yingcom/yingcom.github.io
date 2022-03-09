@@ -21,8 +21,8 @@ const Carousel = () => {
 
         <SwiperSlide className={slideWrapper}>
           <iframe className={slide}
-            title="under-renovation"
-            src="https://codesandbox.io/embed/under-renovation-we2y0?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+            title="creative-board-prototype"
+            src="https://codesandbox.io/embed/creative-board-prototype-7k5mt?fontsize=14&hidenavigation=1&theme=dark&view=preview"
           >
           </iframe>
         </SwiperSlide>
@@ -55,6 +55,14 @@ const Carousel = () => {
           <iframe className={slide}
             title="electric-current"
             src="https://codesandbox.io/embed/electric-current-threejs-5ygj4?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+          >
+          </iframe>
+        </SwiperSlide>
+
+        <SwiperSlide className={slideWrapper}>
+          <iframe className={slide}
+            title="under-renovation"
+            src="https://codesandbox.io/embed/under-renovation-we2y0?fontsize=14&hidenavigation=1&theme=dark&view=preview"
           >
           </iframe>
         </SwiperSlide>
